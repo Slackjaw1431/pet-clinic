@@ -4,9 +4,10 @@
     <parent>
         <groupId>com.tmportfolio</groupId>
         <artifactId>pet-clinic</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.11</version>
     </parent>
     <artifactId>pet-clinic-web</artifactId>
+  <version>0.0.1</version>
 <dependencies>
     <dependency>
         <groupId>com.tmportfolio</groupId>
@@ -43,4 +44,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
+  <scm>
+    <tag>pet-clinic-0.0.11</tag>
+  </scm>
 </project>
