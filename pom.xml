@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.tmportfolio</groupId>
 	<artifactId>pet-clinic</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.11-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>pet-clinic</name>
 	<description>pet-clinic</description>
@@ -36,7 +36,7 @@
 		</plugins>
 	</build>
 	<scm>
-		<developerConnection>scm:git:Slackjaw1431/pet-clinic2.git</developerConnection>
-	  <tag>pet-clinic-0.0.1</tag>
+		<developerConnection>scm:git:git@github.com:Slackjaw1431/pet-clinic2.git</developerConnection>
+	  <tag>pet-clinic-0.0.1-SNAPSHOT</tag>
   </scm>
 </project>
