@@ -8,9 +8,6 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<scm>
-		<developerConnection>scm:git:git@github.com:Slackjaw1431/pet-clinic.git</developerConnection>
-	</scm>
 	<groupId>com.tmportfolio</groupId>
 	<artifactId>pet-clinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -39,5 +36,7 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<scm>
+		<developerConnection>scm:git:git@github.com:Slackjaw1431/pet-clinic.git</developerConnection>
+	</scm>
 </project>
