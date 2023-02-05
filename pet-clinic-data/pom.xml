@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.tmportfolio</groupId>
         <artifactId>pet-clinic</artifactId>
-        <version>0.0.13</version>
+        <version>0.0.14-SNAPSHOT</version>
     </parent>
 
     <artifactId>pet-clinic-data</artifactId>
-  <version>0.0.13</version>
+  <version>0.0.14-SNAPSHOT</version>
 <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
