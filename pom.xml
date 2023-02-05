@@ -37,7 +37,7 @@
 		</plugins>
 	</build>
 	<scm>
-		<developerConnection>scm:git:git@github.com:Slackjaw1431/pet-clinic2.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:Slackjaw1431/pet-clinic.git</developerConnection>
 	  <tag>pet-clinic-0.0.1-SNAPSHOT</tag>
   </scm>
 </project>
