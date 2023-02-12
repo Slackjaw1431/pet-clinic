@@ -6,4 +6,8 @@ public class Owner extends Person{
         super(firstName, lastName);
     }
 
+    public Owner(){
+        super();
+    }
+
 }

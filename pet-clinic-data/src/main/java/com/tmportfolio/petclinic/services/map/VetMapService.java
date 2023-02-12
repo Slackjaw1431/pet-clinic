@@ -2,10 +2,11 @@ package com.tmportfolio.petclinic.services.map;
 
 import com.tmportfolio.petclinic.model.Vet;
 import com.tmportfolio.petclinic.services.CrudService;
+import com.tmportfolio.petclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetMapService extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
@@ -30,5 +31,10 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements Crud
     @Override
     public Vet findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Vet findByLastName(String lastName) {
+        return null;
     }
 }

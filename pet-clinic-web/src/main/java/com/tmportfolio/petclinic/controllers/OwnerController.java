@@ -3,11 +3,12 @@ package com.tmportfolio.petclinic.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/owners")//adding a prefix for the entire class
 @Controller
 public class OwnerController {
 
-    @RequestMapping("/owners")
+    @RequestMapping("")
     public String getOwners(){
-        return "/owners/index";
+        return "index";
     }
 }
