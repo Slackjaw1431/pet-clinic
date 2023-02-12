@@ -2,11 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List Onwers</title>
+    <title>List Owners</title>
 </head>
 <body>
-
-<h1></h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <td>First Name</td>
+        <td>Last Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="owner : ${owners}">
+        <td th:text="${owner?.id}"></td>
+        <td th:text="${owner?.firstName}"></td>
+        <td th:text="${owner?.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
