@@ -8,6 +8,17 @@
     </parent>
     <artifactId>pet-clinic-web</artifactId>
   <version>0.0.14-SNAPSHOT</version>
+
+    <properties>
+        <!-- Web dependencies -->
+        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
+        <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <wro4j.version>1.8.0</wro4j.version>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 <dependencies>
     <dependency>
         <groupId>com.tmportfolio</groupId>
@@ -44,17 +55,17 @@
     <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>jquery</artifactId>
-        <version>3.6.3</version>
+        <version>${webjars-jquery.version}</version>
     </dependency>
     <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>jquery-ui</artifactId>
-        <version>1.13.2</version>
+        <version>${webjars-jquery-ui.version}</version>
     </dependency>
     <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>5.2.3</version>
+        <version>${webjars-bootstrap.version}</version>
     </dependency>
 </dependencies>
 
@@ -63,7 +74,7 @@
             <plugin>
                 <groupId>ro.isdc.wro4j</groupId>
                 <artifactId>wro4j-maven-plugin</artifactId>
-                <version>1.10.1</version>
+                <version>${wro4j.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
@@ -83,7 +94,7 @@
                     <dependency>
                         <groupId>org.webjars</groupId>
                         <artifactId>bootstrap</artifactId>
-                        <version>5.2.3</version>
+                        <version>${webjars-bootstrap.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.mockito</groupId>
@@ -94,9 +105,5 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 </project>
