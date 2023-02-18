@@ -1,8 +1,11 @@
 package com.tmportfolio.petclinic.bootstrap;
 
 import com.tmportfolio.petclinic.model.Owner;
+import com.tmportfolio.petclinic.model.Pet;
+import com.tmportfolio.petclinic.model.PetType;
 import com.tmportfolio.petclinic.model.Vet;
 import com.tmportfolio.petclinic.services.OwnerService;
+import com.tmportfolio.petclinic.services.PetTypeService;
 import com.tmportfolio.petclinic.services.VetService;
 import com.tmportfolio.petclinic.services.map.OwnerMapService;
 import com.tmportfolio.petclinic.services.map.VetMapService;
@@ -14,14 +17,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService =  petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Rover");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Snuffles");
+        PetType savedCatPetType = petTypeService.save(cat);
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Mike");
         owner1.setLastName("West");
@@ -47,6 +62,8 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("Loading vets...");
+
+
 
     }
 }
