@@ -1,12 +1,35 @@
 package com.tmportfolio.petclinic.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "visits")
 public class Visit {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "date")
     private LocalDate date;
-    private String description;
-    private Pet pet;
+
+    @Column(name = "description")
+    private String    description;
+
+    @ManyToOne
+    @JoinColumn(name = "pet")
+    private Pet       pet;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Visit(){
         this.date = LocalDate.now();
