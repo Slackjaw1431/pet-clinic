@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "visits")
-public class Visit {
+public class Visit extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Visit {
     private String    description;
 
     @ManyToOne
-    @JoinColumn(name = "pet")
+    @JoinColumn(name = "pet_id")
     private Pet       pet;
 
     public Long getId() {
