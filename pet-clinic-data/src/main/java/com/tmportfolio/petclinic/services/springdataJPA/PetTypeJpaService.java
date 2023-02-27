@@ -3,7 +3,6 @@ package com.tmportfolio.petclinic.services.springdataJPA;
 import com.tmportfolio.petclinic.model.PetType;
 import com.tmportfolio.petclinic.repositories.PetTypeRepository;
 import com.tmportfolio.petclinic.services.PetTypeService;
-import com.tmportfolio.petclinic.services.map.PetTypeMapService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@Profile("springdataJpa")
+@Profile("jpa")
 public class PetTypeJpaService implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
