@@ -38,6 +38,10 @@ public class PetMapService extends AbstractMapService<Pet, Long> implements PetS
 
     @Override
     public Pet findByName(String name) {
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(pet -> pet.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
     }
 }
