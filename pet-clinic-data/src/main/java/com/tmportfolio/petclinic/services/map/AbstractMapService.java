@@ -50,4 +50,7 @@ public abstract class AbstractMapService<T extends BaseEntity,ID extends Long> {
         return nextId;
     }
 
+//    T findByLastName(String lastName) {
+//        return null;
+//    }
 }
