@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@RequestMapping("/owners/")/adding a prefix for the entire class
+//@RequestMapping("/owners")/adding a prefix for the entire class
 @Controller
 public class OwnerController {
 
@@ -22,13 +22,13 @@ public class OwnerController {
         return "owners/index";
     }
 
-    @RequestMapping("owners/find")
+    @RequestMapping("/owners/find")
     public String findOwners(Model model){
 //        model.addAttribute("")
         return "notimplemented";
     }
 
-    @RequestMapping("oups")
+    @RequestMapping("oops")
     public String error(){
         return "error";
     }
