@@ -45,7 +45,7 @@ class OwnerControllerTest {
     void listOwners() throws Exception {
         when(ownerService.findAll()).thenReturn(owners);
 
-        mockMvc.perform(get("owners"))//request mapping input
+        mockMvc.perform(get("/owners"))//request mapping input
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/index"))//return string output expected
                 .andExpect(model().attribute("owners", hasSize(2)));//return object assessment
