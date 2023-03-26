@@ -11,4 +11,9 @@ public class PetClinicController {
         return "index";
     }
 
+    @RequestMapping("/oops")
+    public String error(){
+        return "error";
+    }
+
 }
