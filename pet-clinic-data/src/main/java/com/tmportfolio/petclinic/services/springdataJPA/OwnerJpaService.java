@@ -2,34 +2,57 @@ package com.tmportfolio.petclinic.services.springdataJPA;
 
 import com.tmportfolio.petclinic.model.Owner;
 import com.tmportfolio.petclinic.repositories.OwnerRepository;
+import com.tmportfolio.petclinic.repositories.PetRepository;
+import com.tmportfolio.petclinic.repositories.PetTypeRepository;
 import com.tmportfolio.petclinic.services.OwnerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
 @Profile("jpa")
 public class OwnerJpaService implements OwnerService {
 
-    private final OwnerRepository ownerRepository;
 
-    public OwnerJpaService(OwnerRepository ownerRepository) {
+    private final OwnerRepository   ownerRepository;
+    private final PetRepository     petRepository;
+    private final PetTypeRepository petTypeRepository;
+
+    public OwnerJpaService(OwnerRepository ownerRepository, PetRepository petRepository,
+                             PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
+        this.petRepository = petRepository;
+        this.petTypeRepository = petTypeRepository;
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return ownerRepository.findByLastName(lastName);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        return ownerRepository.findAllByLastNameLike(lastName);
     }
 
     @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
         ownerRepository.findAll().forEach(owners::add);
-
         return owners;
     }
 
     @Override
+    public Owner findById(Long aLong) {
+        return ownerRepository.findById(aLong).orElse(null);
+    }
+
+    @Override
     public Owner save(Owner object) {
-      return ownerRepository.save(object);
+        return ownerRepository.save(object);
     }
 
     @Override
@@ -38,18 +61,7 @@ public class OwnerJpaService implements OwnerService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        ownerRepository.deleteById(id);
+    public void deleteById(Long aLong) {
+        ownerRepository.deleteById(aLong);
     }
-
-    @Override
-    public Owner findById(Long id) {
-       return ownerRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public Owner findByLastName(String lastName) {
-        return ownerRepository.findByLastName(lastName);
-    }
-
 }
