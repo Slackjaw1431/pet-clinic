@@ -6,6 +6,7 @@ import com.tmportfolio.petclinic.model.PetType;
 import com.tmportfolio.petclinic.services.OwnerService;
 import com.tmportfolio.petclinic.services.PetService;
 import com.tmportfolio.petclinic.services.PetTypeService;
+
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/owners/{ownerId}")
@@ -63,12 +65,12 @@ public class PetController {
             result.rejectValue("name", "duplicate", "already exists");
         }
         owner.getPets().add(pet);
+        pet.setOwner(owner);
         if (result.hasErrors()) {
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
             petService.save(pet);
-
             return "redirect:/owners/" + owner.getId();
         }
     }
@@ -80,15 +82,27 @@ public class PetController {
     }
 
     @PostMapping("/pets/{petId}/edit")
-    public String processUpdateForm(@Valid Pet pet, BindingResult result, Owner owner, Model model) {
+    public String processUpdateForm(/*@Valid */Pet pet, BindingResult result, Owner owner, Model model) {
         if (result.hasErrors()) {
             pet.setOwner(owner);
             model.addAttribute("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
-            owner.getPets().add(pet);
-            petService.save(pet);
-            return "redirect:/owners/" + owner.getId();
+            // check if you find pet for owner in database
+            Optional<Pet> foundPetOptional = owner.getPets().stream().filter(p -> p.getId() == pet.getId()).findFirst();
+
+            if(foundPetOptional.isPresent()) {
+                Pet foundPet = foundPetOptional.get();
+                foundPet.setName(pet.getName());
+                foundPet.setBirthDate(pet.getBirthDate());
+                foundPet.setVisits(pet.getVisits());
+                foundPet.setPetType(pet.getPetType());
+                foundPet.setOwner(owner);
+                ownerService.save(owner);
+                return "redirect:/owners/" + owner.getId();
+            } else {
+                throw new RuntimeException("No pet found with id: " + pet.getId());
+            }
         }
     }
 }
