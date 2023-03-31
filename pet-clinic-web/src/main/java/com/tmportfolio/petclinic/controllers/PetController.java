@@ -8,6 +8,7 @@ import com.tmportfolio.petclinic.services.PetService;
 import com.tmportfolio.petclinic.services.PetTypeService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
@@ -99,6 +101,7 @@ public class PetController {
                 foundPet.setPetType(pet.getPetType());
                 foundPet.setOwner(owner);
                 ownerService.save(owner);
+                log.debug("Pet saved");
                 return "redirect:/owners/" + owner.getId();
             } else {
                 throw new RuntimeException("No pet found with id: " + pet.getId());

@@ -4,7 +4,6 @@ import com.tmportfolio.petclinic.model.Pet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +13,7 @@ class PetMapServiceTest {
     PetMapService petMapService;
 
     private final String name = "Snuffles";
-//    private final Long petId = 1L;
+    private final Long petId = 1L;
 
     @BeforeEach
     void setUp() {
@@ -50,15 +49,45 @@ class PetMapServiceTest {
 
     @Test
     void findById() {
-//        Pet pet = petMapService.findById(1L);
-        Set<Pet>      pets = petMapService.findAll();
-        Pet pet  = pets.iterator().next();
-        assertEquals(name, pet.getName());
+        Pet pet = petMapService.findById(petId);
+        assertEquals(petId, pet.getId());
     }
 
     @Test
     void findByName() {
         Pet pet = petMapService.findByName(name);
         assertEquals(name, pet.getName());
+    }
+
+    @Test
+    void deleteByIdWrongId() {
+        petMapService.deleteById(5L);
+        assertEquals(1, petMapService.findAll().size());
+    }
+
+    @Test
+    void deleteByIdNullId() {
+        petMapService.deleteById(null);
+        assertEquals(1, petMapService.findAll().size());
+    }
+
+    @Test
+    void deleteWithWrongId() {
+        Pet pet = Pet.builder().id(5L).build();
+        petMapService.delete(pet);
+        assertEquals(1, petMapService.findAll().size());
+    }
+
+    @Test
+    void deleteWithNullId() {
+        Pet pet = Pet.builder().build();
+        petMapService.delete(pet);
+        assertEquals(1, petMapService.findAll().size());
+    }
+
+    @Test
+    void deleteNull() {
+        petMapService.delete(null);
+        assertEquals(1, petMapService.findAll().size());
     }
 }
